@@ -2,6 +2,7 @@ import React,{ Component} from 'react';
 import {View ,Text } from 'react-native';
 import Router from './Router';
 import {Provider } from 'react-redux';
+import {createStore ,applyMiddleWare} from 'redux'; 
 import firebase from 'firebase';
 
 class App extends Component{
@@ -20,8 +21,11 @@ class App extends Component{
     }
 
     render(){
+        //const store = createStore(reducers ,{} ,applyMiddleWare); 
         return (
-            <Router />
+          //  <Provider store={store}>
+                <Router />
+           // </Provider>
         );
     }
 }

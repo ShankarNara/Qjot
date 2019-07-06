@@ -1,6 +1,6 @@
 import React,{ Component} from 'react';
 import {View ,Text } from 'react-native';
-import {Button } from './components/common';
+import {Button ,Input } from './components/common';
 
 class Test extends Component{
     render(){
@@ -9,6 +9,8 @@ class Test extends Component{
                 <Text>
                     I feel great today
                 </Text>
+                <Input placeholder= 'Username' secureTextEntry={false} />
+                <Input placeholder= "password" secureTextEntry={true} />
                 <Button >
                     Log in
                 </Button>

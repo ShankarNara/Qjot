@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity} from 'react-native';
 
-const Button = ({ children}) => {
+const Button = ({ children ,styleProp}) => {
     return (
         <TouchableOpacity style={styles.buttonStyle}>
-            <Text style={styles.textStyle}>
+            <Text style={[styles.textStyle , styleProp]}>
                 {children}
             </Text>
         </TouchableOpacity>
@@ -13,16 +13,14 @@ const Button = ({ children}) => {
 
 const styles = {
     textStyle:{
-        fontSize: 16,
+        fontSize: 20,
         alignSelf: 'center',
-        paddingTop: 10,
         paddingBottom:10,
         marginTop:10,
         fontWeight:'600',
         color: '#FF7E69'
     },
     buttonStyle:{
-        flex: 1,
         alignSelf: 'stretch',
         backgroundColor: '#fff',
         borderRadius: 5,
