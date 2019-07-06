@@ -3,7 +3,7 @@ import {View ,Text } from 'react-native';
 import Router from './Router';
 import {Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
-import {createStore ,applyMiddleWare} from 'redux'; 
+import {createStore ,applyMiddleware} from 'redux'; 
 import firebase from 'firebase';
 import Firebase from './Firebase';
 import reducers from './reducers';
@@ -11,24 +11,26 @@ import reducers from './reducers';
 class App extends Component{
     componentWillMount(){
         const firebaseConfig = {
-            apiKey: "AIzaSyAFLiGrxmPV3dZT-rXuR4kbDBPpuzGqIPc",
-            authDomain: "mychat-a0744.firebaseapp.com",
-            databaseURL: "https://mychat-a0744.firebaseio.com",
-            projectId: "mychat-a0744",
-            storageBucket: "mychat-a0744.appspot.com",
-            messagingSenderId: "710104857237",
-            appId: "1:710104857237:web:b3e6c552741decec"
+            apiKey: "AIzaSyC3DiF4E4zY85vRBLg98AoydPG5dprRfOI",
+            authDomain: "qjot-5a7bd.firebaseapp.com",
+            databaseURL: "https://qjot-5a7bd.firebaseio.com",
+            projectId: "qjot-5a7bd",
+            storageBucket: "",
+            messagingSenderId: "288265683962",
+            appId: "1:288265683962:web:e7377325004e9d40"
           };
+          // Initialize Firebase
+          //firebase.initializeApp(firebaseConfig);
 
+          console.log(firebase.apps.length);
           if (!firebase.apps.length) {
            firebase.initializeApp(firebaseConfig);
         }
         
-        
     }
 
     render(){
-        const store = createStore(reducers); 
+        const store = createStore(reducers, {}, applyMiddleware(ReduxThunk)); 
         return (
             <Provider store={store}>
                 <Router />
