@@ -1,8 +1,20 @@
 import React,{Component} from 'react';
 import {View ,Text} from 'react-native';
 import {Input ,Button} from './common';
+import {connect } from 'react-redux';
+import {emailChanged ,passwordChanged } from '../actions';
+
 
 class LoginForm extends Component{
+
+    onEmailChange(text){
+        this.props.emailChanged(text);
+    }
+
+    onPasswordChanged(text){
+        this.props.passwordChanged(text);
+    }
+
     render(){
         return (
             <View>
@@ -15,8 +27,18 @@ class LoginForm extends Component{
                 }}>
                     Log In
                 </Text>
-                <Input placeholder= 'Username' secureTextEntry={false} />
-                <Input placeholder= "password" secureTextEntry={true} />
+                <Input 
+                    placeholder= 'Username' 
+                    secureTextEntry={false}
+                    onChangeText= {this.onEmailChange.bind(this)}
+                    value={this.props.email}
+                />
+                <Input 
+                    placeholder= "password" 
+                    secureTextEntry={true} 
+                    onChangeText= {this.onPasswordChanged.bind(this)}
+                    value={this.props.password}
+                />
                 <Button styleProp={{}}>
                     Log in
                 </Button>
@@ -25,4 +47,11 @@ class LoginForm extends Component{
     }
 }
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+    return {
+        email: state.auth.email,
+        password: state.auth.password
+    };
+};
+
+export default connect (mapStateToProps ,{ emailChanged ,passwordChanged})(LoginForm);
