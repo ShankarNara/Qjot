@@ -7,7 +7,7 @@ const Button = ({ children ,styleProp ,onPress}) => {
             style={styles.buttonStyle}
             onPress = {onPress}
         >
-            <Text style={[styles.textStyle , styleProp]}>
+            <Text style={[ styles.textStyle , styleProp]}>
                 {children}
             </Text>
         </TouchableOpacity>

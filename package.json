@@ -8,7 +8,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@babel/runtime": "^7.5.4",
     "firebase": "^6.2.4",
+    "lodash": "^4.17.14",
     "react": "16.8.6",
     "react-native": "0.60.0",
     "react-native-router-flux": "^4.0.6",
@@ -18,7 +20,6 @@
   },
   "devDependencies": {
     "@babel/core": "7.5.0",
-    "@babel/runtime": "7.5.0",
     "@react-native-community/eslint-config": "0.0.3",
     "babel-jest": "24.8.0",
     "eslint": "6.0.1",

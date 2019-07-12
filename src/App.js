@@ -5,7 +5,6 @@ import {Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import {createStore ,applyMiddleware} from 'redux'; 
 import firebase from 'firebase';
-import Firebase from './Firebase';
 import reducers from './reducers';
 
 class App extends Component{
@@ -15,17 +14,16 @@ class App extends Component{
             authDomain: "qjot-5a7bd.firebaseapp.com",
             databaseURL: "https://qjot-5a7bd.firebaseio.com",
             projectId: "qjot-5a7bd",
-            storageBucket: "",
+            storageBucket: "qjot-5a7bd.appspot.com",
             messagingSenderId: "288265683962",
             appId: "1:288265683962:web:e7377325004e9d40"
           };
           // Initialize Firebase
           //firebase.initializeApp(firebaseConfig);
 
-          console.log(firebase.apps.length);
-          if (!firebase.apps.length) {
-           firebase.initializeApp(firebaseConfig);
-        }
+        console.log(firebase.apps.length);
+
+        firebase.initializeApp(firebaseConfig);
         
     }
 
