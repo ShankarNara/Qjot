@@ -1,12 +1,14 @@
 import {
     TEXT_CHANGED,
-    TITLE_CHANGED
+    TITLE_CHANGED,
+    FILE_FETCH_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
     text: '',
     title: '',
-    savetag: true
+    savetag: true,
+
 };   
 
 export default EditReducer = (state = INITIAL_STATE, action) => {

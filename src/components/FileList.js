@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import _ from 'lodash';
-import { ListView  } from 'react-native';
+import { ListView , FlatList ,List  ,View ,Text } from 'react-native';
 import { connect } from 'react-redux';
 import { fileFetch } from '../actions';
 import ListItem from './ListItem';
@@ -8,49 +8,48 @@ import ListItem from './ListItem';
 class FileList extends Component {
 
     componentWillMount(){
+        console.log("file fetching to happen");
         this.props.fileFetch();
-
-        this.createDataSource(this.props);
-    }
-
-    componentWillReceiveProps(nextProps){
-        this.createDataSource(nextProps);
-    }
-
-    createDataSource({ employees }) {
-
-        console.log(employees);
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1,r2) => {
-                r1!==r2;
-            }
-        });
-
-        this.dataSource = ds.cloneWithRows(employees);
-        console.log(this.dataSource);
-    }
-
-    renderRow(employee){
-        <ListItem employee= {employee}/>;
+        console.log(this.props.files);
     }
 
     render() {
+
+        if(this.props.loading){
+            return(
+                <View>
+                    <Text style= {{fontSize: 32}}>
+                        Please Wait...
+                    </Text>
+                </View>
+            );
+        }
+
+        console.log(this.props.files);
+
         return (
-            <ListView 
-                enableEmptySections
-                dataSource = {this.dataSource}
-                renderRow = {this.renderRow}
-            />
+          <View>
+              <FlatList
+                data = {this.props.files}
+                 renderItem ={({ item }) => (
+                    <ListItem file= {item}/>
+                 )}
+                 keyExtractor= {item => item.uid}
+                />
+          </View>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const employees = _.map( state.employees ,(val ,uid) => {
+    const files = _.map( state.files.list ,(val ,uid) => {
         return { ...val, uid};
     });
 
-    return { employees };
+    const loading = state.files.loading;
+
+    console.log(files);
+    return { files , loading};
 };
 
 export default connect(mapStateToProps, { fileFetch } )(FileList);

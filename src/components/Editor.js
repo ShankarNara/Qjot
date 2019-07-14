@@ -25,6 +25,9 @@ class Editor extends Component{
     }
 
     render(){
+
+        console.log(this.props);
+        
         return (
             <View style= {styles.mainViewStyle}>
 
@@ -42,7 +45,7 @@ class Editor extends Component{
                         onChangeText= {this.onTextChange.bind(this)}
                         multiline = {true}
                         numberOfLines = {4}
-                        value= {this.props.text}
+                        value= {this.props.text }
                     />
                 </View>
 

@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import {View, TouchableOpacity, Text } from 'react-native';
+import {View, TouchableOpacity, TouchableWithoutFeedback, Text } from 'react-native';
 import {Actions } from 'react-native-router-flux';
+import {connect} from 'react-redux';
+import {
+    editText,
+    editTitle
+} from '../actions';
 
 class ListItem extends Component {
 
     onRowPress(){
-        console.log(this.props.employee);
-        Actions.editor({ employee: this.props.employee});
+        console.log(this.props.file);
+        this.props.editText(this.props.file.text);
+        this.props.editTitle(this.props.file.title);
+        Actions.editor();
     }
 
     render(){
 
-        const {title } = this.props.employee;
+        const {title , text} = this.props.file;
 
         return (
-            <TouchableOpacity onPress= {this.onRowPress.bind(this)}>
+            <TouchableWithoutFeedback onPress= {this.onRowPress.bind(this)}>
                 <View>
                     <Text style= {styles.titleStyle}>
                         {title}
                     </Text>
                 </View>
-            </TouchableOpacity>
+            </TouchableWithoutFeedback >
         );
     }
 }
@@ -31,4 +38,4 @@ const styles = {
         padding: 10
     }
 };
-export default ListItem;
+export default connect(null, {editText,editTitle})(ListItem);
