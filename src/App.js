@@ -10,7 +10,7 @@ import reducers from './reducers';
 class App extends Component{
     componentWillMount(){
         const firebaseConfig = {
-            apiKey: "AIzaSyC3DiF4E4zY85vRBLg98AoydPG5dprRfOI",
+            apiKey: "",
             authDomain: "qjot-5a7bd.firebaseapp.com",
             databaseURL: "https://qjot-5a7bd.firebaseio.com",
             projectId: "qjot-5a7bd",
